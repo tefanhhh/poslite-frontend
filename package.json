@@ -7,7 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --watch --config webpack.dev.js",
     "start": "webpack serve --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
+    "build": "webpack --config webpack.prod.js",
+    "lint": "eslint . --ext .js,.ts,.tsx,.jsx",
+    "lint:fix": "npm run lint -- --fix",
+    "prettier": "prettier --write ."
   },
   "keywords": [],
   "author": "",
@@ -63,7 +66,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,ts,tsx}": "eslint --cache --fix",
-    "*.{js,ts,tsx,css,md}": "prettier --write"
+    "*.{js,ts,tsx,jsx}": "eslint --cache --fix",
+    "*.{js,ts,tsx,jsx,css,md}": "prettier --write"
   }
 }

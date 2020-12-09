@@ -25,5 +25,10 @@
   "rules": {
     "comma-style": ["error", "last"],
     "comma-dangle": ["error", "always-multiline"]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   }
 }

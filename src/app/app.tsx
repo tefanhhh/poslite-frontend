@@ -5,12 +5,16 @@ import Home from './modules/home/home';
 import Header from './shared/layout/header/header';
 import LoginService from './services/login/login.service';
 
+type IApp = {
+  title: string;
+};
+
 export default class App extends React.Component {
-  constructor(props) {
+  constructor(props: IApp) {
     super(props);
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     LoginService.login({
       username: 'admin',
       password: 'admin',
@@ -25,7 +29,7 @@ export default class App extends React.Component {
     );
   }
 
-  render() {
+  render(): JSX.Element {
     return (
       <React.Fragment>
         <Header title="Poslite" />

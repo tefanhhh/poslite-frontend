@@ -8,7 +8,7 @@ type IHeaderProps = {
   title: string;
 };
 
-export default function Header(props: IHeaderProps) {
+export default function Header(props: IHeaderProps): JSX.Element {
   return (
     <div>
       <AppBar position="sticky">

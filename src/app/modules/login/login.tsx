@@ -25,7 +25,7 @@ const materialStyles = makeStyles({
   },
 });
 
-export default function Login() {
+export default function Login(): JSX.Element {
   const classes = materialStyles();
   return (
     <form noValidate autoComplete="off">

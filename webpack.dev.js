@@ -21,7 +21,7 @@ module.exports = merge(common, {
         port: '4200',
         proxy: { target: 'http://localhost:4000' },
       },
-      { reload: false }
+      { reload: false },
     ),
     new WebpackNotifierPlugin({
       title: 'Poslite',
