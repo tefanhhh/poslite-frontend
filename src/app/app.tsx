@@ -12,6 +12,7 @@ type IApp = {
 export default class App extends React.Component {
   constructor(props: IApp) {
     super(props);
+    console.log(process.env);
   }
 
   componentDidMount(): void {

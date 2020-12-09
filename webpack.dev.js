@@ -4,6 +4,7 @@ const common = require('./webpack.common.js');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = merge(common, {
   mode: 'development',
@@ -14,6 +15,12 @@ module.exports = merge(common, {
     port: '4000',
   },
   plugins: [
+  new webpack.DefinePlugin({
+    'process.env': {
+      NODE_ENV: JSON.stringify('development'),
+      SERVER_API: JSON.stringify(''),
+    }
+  }),
     new FriendlyErrorsWebpackPlugin(),
     new BrowserSyncPlugin(
       {
