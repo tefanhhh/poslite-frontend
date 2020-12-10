@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios';
+import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
 
 type ICredential = {
   username: string;
@@ -6,16 +6,20 @@ type ICredential = {
   rememberMe: boolean;
 };
 
-type ILoginRes = {
+type IToken = {
   id_token: string;
 };
 
 export default class LoginService {
-  private static resourceUrl = 'http://117.53.44.244:8080/api/authenticate';
+  private static resourceUrl = `${process.env.SERVER_API_URL}/api/authenticate`;
 
-  static login(credentials: ICredential): Promise<AxiosResponse<ILoginRes>> {
-    return axios.post(this.resourceUrl, credentials, {
+  static login(credentials: ICredential): Promise<AxiosResponse<IToken>> {
+    const config: AxiosRequestConfig = {
+      url: this.resourceUrl,
+      method: 'POST',
       responseType: 'json',
-    });
+    };
+
+    return axios.post(this.resourceUrl, credentials, config);
   }
 }

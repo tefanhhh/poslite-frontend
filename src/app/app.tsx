@@ -5,14 +5,13 @@ import Home from './modules/home/home';
 import Header from './shared/layout/header/header';
 import LoginService from './services/login/login.service';
 
-type IApp = {
-  title: string;
-};
+type IAppState = {};
 
-export default class App extends React.Component {
-  constructor(props: IApp) {
+type IAppProps = {};
+
+export default class App extends React.Component<IAppProps, IAppState> {
+  constructor(props) {
     super(props);
-    console.log(process.env);
   }
 
   componentDidMount(): void {
