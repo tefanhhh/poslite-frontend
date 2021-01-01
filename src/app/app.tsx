@@ -5,15 +5,7 @@ import Home from './modules/home/home';
 import Header from './shared/layout/header/header';
 import LoginService from './services/login/login.service';
 
-type IAppState = {};
-
-type IAppProps = {};
-
-export default class App extends React.Component<IAppProps, IAppState> {
-  constructor(props) {
-    super(props);
-  }
-
+export default class App extends React.Component {
   componentDidMount(): void {
     LoginService.login({
       username: 'admin',

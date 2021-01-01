@@ -1,9 +1,11 @@
 * {
   font-family: 'Roboto';
+  box-sizing: inherit;
 }
 
 html,
 body {
   margin: 0 auto;
   direction: ltr;
+  box-sizing: border-box;
 }

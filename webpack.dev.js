@@ -15,12 +15,12 @@ module.exports = merge(common, {
     port: '4000',
   },
   plugins: [
-  new webpack.DefinePlugin({
-    'process.env': {
-      NODE_ENV: JSON.stringify('development'),
-      SERVER_API_URL: JSON.stringify('http://localhost:8080'),
-    }
-  }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('development'),
+        SERVER_API_URL: JSON.stringify('http://localhost:8080'),
+      },
+    }),
     new FriendlyErrorsWebpackPlugin(),
     new BrowserSyncPlugin(
       {
