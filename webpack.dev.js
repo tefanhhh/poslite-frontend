@@ -7,13 +7,34 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = merge(common, {
-  mode: 'development',
-  devtool: 'inline-source-map',
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
+    clientLogLevel: 'silent',
     compress: true,
+    contentBase: './',
+    contentBasePublicPath: './',
+    disableHostCheck: true,
+    filename: '[name].bundle.js',
+    historyApiFallback: true,
+    host: 'localhost',
+    hot: true,
+    hotOnly: false,
+    inline: true,
+    lazy: false,
+    liveReload: false,
+    noInfo: false,
+    open: false,
+    overlay: {
+      warning: true,
+      error: true,
+    },
     port: '4000',
+    public: 'localhost:4000',
+    publicPath: '/',
+    stats: 'normal',
+    writeToDisk: false,
   },
+  devtool: 'inline-source-map',
+  mode: 'development',
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
@@ -34,4 +55,8 @@ module.exports = merge(common, {
       title: 'Poslite',
     }),
   ],
+  performance: {
+    hints: false,
+  },
+  stats: 'normal',
 });

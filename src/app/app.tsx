@@ -1,25 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import Home from './modules/home/home';
 import Header from './shared/layout/header/header';
-import LoginService from './services/login/login.service';
+import Home from './modules/home/home';
+import Dashboard from './modules/dashboard/dashboard';
 
 export default class App extends React.Component {
-  componentDidMount(): void {
-    LoginService.login({
-      username: 'admin',
-      password: 'admin',
-      rememberMe: true,
-    }).then(
-      (res) => {
-        console.log(res);
-      },
-      (err) => {
-        console.log(err);
-      },
-    );
+  constructor(props) {
+    super(props);
   }
+
+  componentDidMount(): void {}
 
   render(): JSX.Element {
     return (
@@ -27,9 +18,8 @@ export default class App extends React.Component {
         <Header title="Poslite" />
         <Router>
           <Switch>
-            <Route path="/">
-              <Home />
-            </Route>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/dashboard" component={Dashboard} />
           </Switch>
         </Router>
       </React.Fragment>

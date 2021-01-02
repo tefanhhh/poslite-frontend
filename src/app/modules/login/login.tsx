@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import './login.scss';
 
@@ -56,7 +57,10 @@ class Login extends React.Component<ILoginProps, ILoginState> {
 
   handleRememberMeChange(event) {}
 
-  handleSubmit(event) {}
+  handleSubmit(event) {
+    event.preventDefault();
+    return <Redirect to="/dashboard" />;
+  }
 
   render() {
     const { classes } = this.props;

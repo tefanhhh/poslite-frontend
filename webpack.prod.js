@@ -5,19 +5,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = merge(common, {
-  mode: 'production',
   devtool: 'source-map',
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('development'),
-        SERVER_API_URL: JSON.stringify('http://localhost:8080'),
-      },
-    }),
-    new CleanWebpackPlugin({
-      cleanStaleWebpackAssets: false,
-    }),
-  ],
+  mode: 'production',
   optimization: {
     minimize: true,
     minimizer: ['...', new CssMinimizerPlugin()],
@@ -71,4 +60,15 @@ module.exports = merge(common, {
     maxEntrypointSize: 400000,
     maxAssetSize: 400000,
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('development'),
+        SERVER_API_URL: JSON.stringify('http://localhost:8080'),
+      },
+    }),
+    new CleanWebpackPlugin({
+      cleanStaleWebpackAssets: false,
+    }),
+  ],
 });
