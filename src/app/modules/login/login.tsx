@@ -1,7 +1,7 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import './login.scss';
+import * as H from 'history';
 
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import TextField from '@material-ui/core/TextField';
@@ -34,6 +34,7 @@ type ILoginState = {
 
 type ILoginProps = {
   classes: any;
+  history: H.History<H.LocationState>;
 };
 
 class Login extends React.Component<ILoginProps, ILoginState> {
@@ -51,15 +52,25 @@ class Login extends React.Component<ILoginProps, ILoginState> {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleUsernameChange(event) {}
+  handleUsernameChange(event) {
+    event.preventDefault();
+    this.setState({ username: event.target.value });
+  }
 
-  handlePasswordChange(event) {}
+  handlePasswordChange(event) {
+    event.preventDefault();
+    this.setState({ password: event.target.value });
+  }
 
-  handleRememberMeChange(event) {}
+  handleRememberMeChange(event) {
+    event.preventDefault();
+    this.setState({ rememberMe: event.target.checked });
+  }
 
   handleSubmit(event) {
     event.preventDefault();
-    return <Redirect to="/dashboard" />;
+    const { history } = this.props;
+    history.push('/dashboard');
   }
 
   render() {
@@ -82,7 +93,10 @@ class Login extends React.Component<ILoginProps, ILoginState> {
           variant="outlined"
           className={classes.textField}
           value={this.state.username}
+          required={true}
           onChange={this.handleUsernameChange}
+          error={this.state.username.length < 1}
+          helperText="Username is required to not be empty"
         />
         <br />
         <TextField
@@ -93,7 +107,10 @@ class Login extends React.Component<ILoginProps, ILoginState> {
           variant="outlined"
           className={classes.textField}
           value={this.state.password}
+          required={true}
           onChange={this.handlePasswordChange}
+          error={this.state.password.length < 1}
+          helperText="Password is required to not be empty"
         />
         <br />
         <FormControlLabel
@@ -101,7 +118,7 @@ class Login extends React.Component<ILoginProps, ILoginState> {
             <Checkbox
               id="rememberMe"
               name="Remember Me"
-              value={this.state.rememberMe}
+              checked={this.state.rememberMe}
               onChange={this.handleRememberMeChange}
             />
           }
